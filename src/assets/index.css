@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities{
+
+    :root{
+        --body-m:1rem;
+        --content-width:80rem;
+        --content-p-width:82rem;
+    }
+
+    body, #app{
+        @apply h-screen flex flex-col        
+    }
+
+    .Prose {     
+        grid-template-columns: [full-start] minmax(var(--body-m), 1fr) [main-start] minmax(0, var(--content-width)) [main-end] minmax(var(--body-m), 1fr) [full-end];       
+        @apply grid auto-rows-max
+    }
+
+    .Prose > * {
+      grid-column: main;
+    }
+
+    .grid-full {
+        grid-column: full;
+    }
+
+    .container{             
+        max-width: calc(var(--content-width) + var(--body-m) + var(--body-m)) ;
+        padding-left: var(--body-m);    
+        padding-right: var(--body-m);    
+        @apply w-full   
+    }
+
+    main{
+        @apply grow
+    }    
+}
